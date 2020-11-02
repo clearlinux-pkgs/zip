@@ -4,7 +4,7 @@
 #
 Name     : zip
 Version  : 3.0
-Release  : 24
+Release  : 25
 URL      : https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/3.0/zip30.tar.gz
 Source0  : https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/3.0/zip30.tar.gz
 Summary  : No detailed summary available
@@ -49,6 +49,7 @@ man components for the zip package.
 
 %prep
 %setup -q -n zip30
+cd %{_builddir}/zip30
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -58,20 +59,20 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568063535
+export SOURCE_DATE_EPOCH=1604361158
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-make  %{?_smp_mflags} CFLAGS="$CFLAGS" BIND="gcc $LDFLAGS" -f unix/Makefile generic_gcc
+make  %{?_smp_mflags}  CFLAGS="$CFLAGS" BIND="gcc $LDFLAGS" -f unix/Makefile generic_gcc
 
 
 %install
-export SOURCE_DATE_EPOCH=1568063535
+export SOURCE_DATE_EPOCH=1604361158
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/zip
-cp LICENSE %{buildroot}/usr/share/package-licenses/zip/LICENSE
+cp %{_builddir}/zip30/LICENSE %{buildroot}/usr/share/package-licenses/zip/b440a2eeacdbd257d99f253ac9a2127bc421c736
 %makeinstall -f unix/Makefile
 
 %files
@@ -86,7 +87,7 @@ cp LICENSE %{buildroot}/usr/share/package-licenses/zip/LICENSE
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/zip/LICENSE
+/usr/share/package-licenses/zip/b440a2eeacdbd257d99f253ac9a2127bc421c736
 
 %files man
 %defattr(0644,root,root,0755)
