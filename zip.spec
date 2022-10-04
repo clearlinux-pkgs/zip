@@ -4,7 +4,7 @@
 #
 Name     : zip
 Version  : 3.0
-Release  : 26
+Release  : 27
 URL      : https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/3.0/zip30.tar.gz
 Source0  : https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/3.0/zip30.tar.gz
 Summary  : No detailed summary available
@@ -59,20 +59,20 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1604361158
+export SOURCE_DATE_EPOCH=1664893906
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}  CFLAGS="$CFLAGS" BIND="gcc $LDFLAGS" -f unix/Makefile generic_gcc
 
 
 %install
-export SOURCE_DATE_EPOCH=1604361158
+export SOURCE_DATE_EPOCH=1664893906
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/zip
-cp %{_builddir}/zip30/LICENSE %{buildroot}/usr/share/package-licenses/zip/b440a2eeacdbd257d99f253ac9a2127bc421c736
+cp %{_builddir}/zip30/LICENSE %{buildroot}/usr/share/package-licenses/zip/b440a2eeacdbd257d99f253ac9a2127bc421c736 || :
 %makeinstall -f unix/Makefile
 
 %files

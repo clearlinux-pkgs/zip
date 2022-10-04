@@ -1,9 +1,7 @@
 # This file contains recursive sources that require this package
 ImageMagick
 R
-bazel
 ltp
 openjdk
 openjdk11
 openjdk13
-rpm
